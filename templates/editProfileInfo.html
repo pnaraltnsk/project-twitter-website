@@ -21,18 +21,14 @@
      <a id="sign-out" hidden="true">SIGN OUT</a>
  </div>
 
+ <div  style="margin-top:20px;">
+ <form action="/add_description" method="post">
+    <label for="w3des">Description:</label></br></br>
 
-    <div class="centerItems">
-        <h2>{{user_info.name}}</h2>
-        <h3>username:{{user_info.username}}</h3>
-
-        <div class="card">
-            Profile Description:
-            <p>{{user_info.description}}</p>
-            <button type="button" style="padding:0px;" onclick="window.location.href='{{ url_for ( 'edit_profile_info') }}'"><i style="font-size:20px;" class="material-icons">edit</i></button>
-
-        </div>
-    </div>
+     <textarea style="width:70%;height:150px;" id="w3des" name="description" maxlength="280" value="{{user_info.description}}" required></textarea></br></br>
+    <input type="submit" class="btnCompare" value="SUBMIT">
+ </form>
+</div>
 
     {% if add==False %}
     <div class="alert">
