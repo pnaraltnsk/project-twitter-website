@@ -26,7 +26,8 @@
     <label for="w3des">Description:</label></br></br>
 
      <textarea style="width:70%;height:150px;" id="w3des" name="description" maxlength="280" value="{{user_info.description}}" required></textarea></br></br>
-    <input type="submit" class="btnCompare" value="SUBMIT">
+     <input type="hidden" name="email" value="{{user_info.email}}">
+     <input type="submit" class="btnCompare" value="SUBMIT">
  </form>
 </div>
 

@@ -21,25 +21,16 @@
      <a id="sign-out" hidden="true">SIGN OUT</a>
  </div>
 
-    {{user_tweets}}
-    <div class="centerItems">
-        <h2>{{user_info.name}}</h2>
-        <h3>username:{{user_info.username}}</h3>
+ <div  style="margin-top:20px;">
+ <form action="/add_tweet" method="post">
+    <label for="w3des">Tweet:</label></br></br>
 
-        <div class="card">
-            Profile Description:
-            <p>{{user_info.description}}</p>
-            <button type="button" style="padding:0px;" onclick="window.location.href='{{ url_for ( 'edit_profile_info') }}'"><i style="font-size:20px;" class="material-icons">edit</i></button>
+     <textarea style="width:70%;height:150px;" id="w3des" name="tweet" maxlength="280" required></textarea></br></br>
+    <input type="submit" class="btnCompare" value="TWEET">
+ </form>
+</div>
 
-        </div>
-    </div>
 
-    {% if add==False %}
-    <div class="alert">
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        This username already exists! Try something else.
-    </div>
-    {% endif %}
 
 
     <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
