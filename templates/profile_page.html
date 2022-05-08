@@ -57,7 +57,7 @@
                 {% if loop.index < 50 %}
                     <div class="card">
                         {{tweet.tweet}}<br>
-                        {{tweet.date}}
+                        {{tweet.creator}}<br>{{tweet.date}}
                     </div>
                 {% endif %}
             {% endfor %}
