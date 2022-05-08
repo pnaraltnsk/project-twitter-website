@@ -54,12 +54,13 @@ filename='style.css') }}">
    <div>
 
 
-        {% if users %}
-            {% for user in users %}
+        {% if tweets %}
+            {% for tweet in tweets %}
                 <div class="card">
-                    Username:{{user.username}}<br>
-                    Name:{{user.name}}
-                    <button type="button" style="float:right;" onclick="window.location.href='{{ url_for ( 'gotoprofile_page' , email = user.email ) }}'">OPEN PROFILE</button>
+                    {{tweet.tweet}}<br>
+                    {{tweet.creator}}<br>
+                    {{tweet.date}}
+                    <button type="button" style="float:right;" onclick="window.location.href='{{ url_for ( 'gotoprofile_page' , email = tweet.creator ) }}'">OPEN PROFILE</button>
                 </div>
 
             {% endfor %}
