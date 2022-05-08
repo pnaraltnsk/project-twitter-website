@@ -22,25 +22,50 @@
 
  </div>
 
-    {{user_tweets}}
-    <div class="centerItems">
+
+    <div class="centerItems" >
         <h2>{{user_info.name}}</h2>
         <h3>username:{{user_info.username}}</h3>
+        {% set count = namespace(value=0) %}
+        {% for follower in user_info.followers %}
+            {% set count.value = count.value + 1 %}
+        {% endfor %}
+        {% set countt = namespace(value=0) %}
+        {% for follower in user_info.followings %}
+            {% set countt.value = countt.value + 1 %}
+        {% endfor %}
+        Followers:{{count.value}}Followings:{{countt.value}}<br>
+
+        {% if add == 1 %}
+            <button type="button" value="UNFOLLOW" onclick="window.location.href='{{ url_for ( 'unfollow_user', email = user_info.email) }}'">UNFOLLOW</button>
+        {% endif %}
+        {% if add == 2 %}
+            <button type="button" value="FOLLOW" onclick="window.location.href='{{ url_for ( 'follow_user', email = user_info.email) }}'">FOLLOW</button>
+
+        {% endif %}
+
 
         <div class="card">
             Profile Description:
             <p>{{user_info.description}}</p>
+            {% if user_data.email == user_info.email %}
             <button type="button" style="padding:0px;" onclick="window.location.href='{{ url_for ( 'edit_profile_info') }}'"><i style="font-size:20px;" class="material-icons">edit</i></button>
-
+            {% endif %}
         </div>
+        {% if user_tweets %}
+            {% for tweet in user_tweets%}
+                {% if loop.index < 50 %}
+                    <div class="card">
+                        {{tweet.tweet}}<br>
+                        {{tweet.date}}
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+        {% endif %}
     </div>
 
-    {% if add==False %}
-    <div class="alert">
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        This username already exists! Try something else.
-    </div>
-    {% endif %}
+
 
 
     <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
