@@ -58,6 +58,9 @@
                     <div class="card">
                         {{tweet.tweet}}<br>
                         {{tweet.creator}}<br>{{tweet.date}}
+                        {% if user_data.email == user_info.email %}
+                            <button type="button" style="padding:3.5px;" onclick="window.location.href='{{ url_for ( 'edit_tweet', id = tweet.id) }}'"><i style="font-size:20px;" class="material-icons">edit</i></button>
+                        {% endif %}
                     </div>
                 {% endif %}
             {% endfor %}

@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+
+    <!-- <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" /> -->
+    <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet"
+    href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
+
+  <title>Datastore and Firebase Auth Example</title>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static',
+  filename='style.css') }}">
+
+</head>
+<body>
+ <div class="topnav">
+    <a id="home" href="{{ url_for('home')}}" >HOME</a>
+     <a id="sign-in" hidden="false">SIGN IN</a>
+     <a id="sign-out" hidden="true">SIGN OUT</a>
+ </div>
+
+ <div  style="margin-top:20px;">
+ <form action="/update_tweet/{{id}}" method="post">
+    <label for="w3des">Tweet:</label></br></br>
+
+     <textarea style="width:70%;height:150px;" id="w3des" name="tweet" maxlength="280" required></textarea></br></br>
+    <input type="submit" class="btnCompare" value="EDIT">
+ </form>
+</div>
+
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+    <script src="{{ url_for('static', filename='app-setup.js') }}"></script>
+</body>
+
+</html>
