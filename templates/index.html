@@ -1,0 +1,79 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+
+<!-- <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
+<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" /> -->
+<script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
+<link type="text/css" rel="stylesheet"
+href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+ <title>Datastore and Firebase Auth Example</title>
+ <script src="{{ url_for('static', filename='script.js') }}"></script>
+ <link type="text/css" rel="stylesheet" href="{{ url_for('static',
+filename='style.css') }}">
+</head>
+<body>
+ <div class="topnav">
+
+
+
+     <a id="sign-out" hidden="true">SIGN OUT</a>
+     <a id="sign-in" hidden="false">SIGN IN</a>
+     {% if user_data %}
+
+      <a id="addtweet" href="{{ url_for('addTweetPage')}}">ADD TWEET</a>
+    <div class="search-container">
+    <form  action="/search_users" method="post">
+    <input type="text" placeholder="Search user.." name="search_u" required>
+    <button type="submit" style="margin-left:0px;padding:3.5px;" name="search_button"><i style="font-size:20px;" class="material-icons">search</i></button>
+    </form>
+    </div>
+     <div class="search-container">
+    <form  action="/search_context" method="post">
+    <input type="text" placeholder="Search context.." name="search_c" required>
+    <button type="submit" style="margin-left:0px;padding:3.5px;" name="search_button"><i style="font-size:20px;" class="material-icons">search</i></button>
+    </form>
+    </div>
+    <a type="button" style="float:right;margin:10px;padding:0px;" onclick="window.location.href='{{ url_for ( 'profile_page' ) }}'"><i style="font-size:25px;" class="material-icons">account_circle</i></a>
+
+     <p style="float:right;color:#FFFFFF;">Welcome {{user_info.username}}! </p>
+
+     {% endif %}
+
+ </div>
+
+
+
+ <h1 class="colorr">Twitter</h1>
+
+
+ <div id="firebase-auth-container"></div>
+
+   <div>
+
+        {% if tweets %}
+            {% for tweet in tweets %}
+                {% if loop.index < 50%}
+                <div class="card">{{tweet.tweet}}<br>{{tweet.date}}</div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+
+   </div>
+    {% if bool==1 %}
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        Please make sure that all tasks and invited users are removed from board before deleting!
+    </div>
+    {% endif %}
+
+ <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+ <script src="{{ url_for('static', filename='app-setup.js') }}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+
+    <!-- <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" /> -->
+    <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet"
+    href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
+
+  <title>Datastore and Firebase Auth Example</title>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static',
+  filename='style.css') }}">
+
+</head>
+<body>
+ <div class="topnav">
+    <a id="home" href="{{ url_for('home')}}" >HOME</a>
+     <a id="sign-in" hidden="false">SIGN IN</a>
+     <a id="sign-out" hidden="true">SIGN OUT</a>
+ </div>
+
+
+    <div class="centerItems">
+        <form action="/get_username" method="post">
+         <label class="evform" for="evname"> Username: </label> <input class="evforminput" id="evname" type="text" value="" name="username" required/><br/>
+
+         <input type="submit" class="btnCompare" value="SUBMIT" name="submit_button"/>
+        </form>
+    </div>
+
+    {% if add==1 %}
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        This username already exists! Try something else.
+    </div>
+    {% endif %}
+
+   {% if add==2 %}
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        Please enter a username without space!
+    </div>
+    {% endif %}
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+    <script src="{{ url_for('static', filename='app-setup.js') }}"></script>
+</body>
+
+</html>
